@@ -8,6 +8,7 @@ RUN Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointMa
 
 RUN choco install llvm  -y
 RUN choco install Ninja -y
+RUN choco install cmake --installargs 'ADD_CMAKE_TO_PATH=System'
 RUN choco install conan -y
 
 ADD profile C:\Users\ContainerAdministrator\.conan\profiles\default
