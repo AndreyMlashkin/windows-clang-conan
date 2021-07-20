@@ -14,4 +14,5 @@ RUN choco install conan -y
 ADD profile C:\Users\ContainerAdministrator\.conan\profiles\default
 
 # test code, should be deleted later
-RUN conan install zlib/1.2.11@ --build "*"
+RUN conan new hello/0.1 -s -t
+RUN conan create . --build missing
