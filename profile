@@ -1,13 +1,14 @@
 [settings]
 os=Windows
-os_build=Windows
 arch=x86_64
-arch_build=x86_64
-build_type=Debug
+build_type=Release
 compiler=clang
 compiler.version=12
 
-[env]
-CC=clang-cl
-CXX=clang-cl
-CONAN_CMAKE_GENERATOR=Ninja
+[buildenv]
+CC=clang
+CXX=clang
+RC=clang
+
+[conf]
+tools.cmake.cmaketoolchain:generator=Ninja

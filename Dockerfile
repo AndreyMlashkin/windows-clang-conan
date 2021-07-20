@@ -11,8 +11,12 @@ RUN choco install Ninja -y
 RUN choco install cmake -y --installargs 'ADD_CMAKE_TO_PATH=System'
 RUN choco install conan -y
 
+SHELL ["cmd", "/wait", "/S", "/C"]
+RUN setx /M PATH "%PATH%;C:\Program Files\LLVM\bin"
+SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop';"]
+
 ADD profile C:\Users\ContainerAdministrator\.conan\profiles\default
 
 # test code, should be deleted later
 RUN conan new hello/0.1 -m v2_cmake
-RUN conan create . --build missing
+RUN conan create . hello/0.1@ -m v2_cmake -c tools.env.virtualenv:auto_use=True
