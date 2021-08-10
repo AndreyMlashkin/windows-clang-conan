@@ -6,11 +6,11 @@ SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPref
 # Install chocolatey
 RUN Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 
-RUN choco install windows-sdk-10.0 -y
 RUN choco install llvm  -y
 RUN choco install Ninja -y
 RUN choco install cmake -y --installargs 'ADD_CMAKE_TO_PATH=System'
 RUN choco install conan -y
+RUN choco install windows-sdk-10-version-2004-all -y
 
 SHELL ["cmd", "/wait", "/S", "/C"]
 RUN setx /M PATH "%PATH%;C:\Program Files\LLVM\bin"
